@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: traduction
+  labels:
+    app: traduction
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: traduction
+  template:
+    metadata:
+      labels:
+        app: traduction
+    spec:
+      containers:
+      - name: traduction
+        image: loico16/traduction:v1
+        ports:
+        - containerPort: 3002
