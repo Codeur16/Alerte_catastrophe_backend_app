@@ -5,26 +5,12 @@ const user =(sequelize, DataTypes)=>{
             primaryKey: true,
             autoIncrement: true
         },
-        name: {
+        username: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: {
-                msg:"l'email est déjà utilisé"
+                msg:"Ce nom d'utilisateur est déjà utilisé"
             },
-        },
-        email: {
-            type: DataTypes.STRING,
-            unique: {
-                msg:"l'email est déjà utilisé"
-            },
-            allowNull: false
-        },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate:{
-                min:6
-            }
         }
         },
         {

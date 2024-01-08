@@ -1,13 +1,12 @@
 
 const {Sequelize, DataTypes} =require('sequelize');
-const urgence = require('../model/urgenceModel');
-const  image = require('../model/ImageModel');
+// const userModel = require('../model/userModel');
 
 
 // Créer une instance Sequelize avec les informations de connexion
 const DB = new Sequelize({
   dialect: 'sqlite',
-  storage: './Urgence.db', // Chemin vers le fichier de la base de données SQLite
+  storage: './notification.db', // Chemin vers le fichier de la base de données SQLite
 });
 
 // Tester la connexion à la base de données
@@ -26,7 +25,6 @@ DB
     
   }
 //creation des tables  
-const imageTable = image(DB, DataTypes);
-const urgenceTable = urgence(DB, DataTypes);
+// const userTable = userModel(DB, DataTypes);
 
-module.exports = {DB, initDB, imageTable, urgenceTable};
+module.exports = {DB, initDB };

@@ -5,7 +5,11 @@ const urgence =(sequelize, DataTypes)=>{
           primaryKey: true,
           autoIncrement: true
         },
-        titre: {
+        userId:{
+          type: DataTypes.INTEGER,
+          allowNull: false
+        },
+        type: {
           type: DataTypes.STRING,
           allowNull: false
         },
@@ -13,32 +17,21 @@ const urgence =(sequelize, DataTypes)=>{
           type: DataTypes.TEXT,
           allowNull: false
         },
-        type: {
+        lieu:{
           type: DataTypes.STRING,
           allowNull: false
         },
-        ville: {
-          type: DataTypes.STRING,
-          allowNull: false
-        },
-        etat_urgence: {
-          type: DataTypes.BOOLEAN,
-          defaultValue: false
-        },
-        niveau_gravite: {
-          type: DataTypes.STRING,
-          allowNull: true
-        },
-        statut: {
-          type: DataTypes.STRING,
+        date:{
+          type: DataTypes.DATE,
           allowNull: false
         }
+        
       }, {
         tableName: 'urgence', // Nom de la table dans la base de données (facultatif)
         timestamps: true // Ajouter automatiquement les champs createdAt et updatedAt (facultatif)
       });
       Urgence.associate = (models)=>{
-        Urgence.hasMany(models.comment, {
+        Urgence.hasMany(models.image , {
             foreignKey: 'urgence_Id',
             sourceKey:'urgenceId'
         });
@@ -49,3 +42,6 @@ const urgence =(sequelize, DataTypes)=>{
       
       // Exporter le modèle Urgence
       module.exports = urgence;
+
+
+

@@ -4,21 +4,10 @@ const { userTable }= require("../config/database");
 
 
    const signup=(req,res)=>{
-        const {name,email,password} = req.body;
-        if(!name ||!email ||!password){
-            return res.status(400).json({
-                message:"donnees incompletes"
-            });
-        }
-        const hash = bcrypt.hashSync(password,10);
-        const newuser = {
-            name,
-            email,
-            password:hash
-        };
-        userTable.create(newuser)
+        const body = req.body;
+        userTable.create(body)
         .then(users =>{
-            const message="Le users "+req.body.name+" a bien été créé";
+            const message="Le users "+req.body.username+" a bien été créé";
             res.status(200).json({message, data: users});
 
         })

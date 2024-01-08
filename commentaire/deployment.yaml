@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: urgence
+  name: commentaire
 spec:
   selector:
     matchLabels:
-      app: urgence
+      app: commentaire
   template:
     metadata:
       labels:
-        app: urgence
+        app: commentaire
     spec:
       containers:
-      - name: urgence
-        image: loico16/urgence:latest
+      - name: commentaire
+        image: loico16/commentaire:latest
         ports:
-        - containerPort: 3000
+        - containerPort: 3006

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: urgence-pod
+spec: 
+  containers:
+  - name: urgences
+    image: loico16/urgence:v1

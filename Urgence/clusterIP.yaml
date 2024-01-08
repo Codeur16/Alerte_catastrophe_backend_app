@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: urgence
+spec:
+  selector:
+    app: urgence
+  ports:
+    - protocol: TCP
+      port: 30
+      targetPort: 30
+  type: ClusterIP
