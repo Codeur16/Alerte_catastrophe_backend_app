@@ -1,30 +1,5 @@
-const { commentTable, urgenceTable } = require("../config/database");
+const { commentTable } = require("../config/database");
 // Ajouter un commentaire
-const addComment = (req, res) => {
-  const { urgenceId } = req.params;
-
-  urgenceTable.findByPk(urgenceId)
-  .then((urgences) => {
-    if (!urgences) {
-      return res.status(404).send({ message: "urgence inexistante ! " });
-    }
-
-    const Comments = commentTable.create({
-      ...req.body,
-      urgence_Id: urgences.urgenceId,
-    });
-
-    Comments.then((createdComments) => {
-      const message = `L'étudiant ${createdComments.contenu} a bien été créé`;
-      return res.status(201).json({ message, data: createdComments });
-    }).catch((err) => {
-      console.error(err);
-      res
-        .status(500)
-        .json({ message: "Erreur lors de la création d'un étudiant", err });
-    });
-  });
-};
 
 // modifier un commentaire 
 const updateComment = (req, res) => {
@@ -39,7 +14,7 @@ const updateComment = (req, res) => {
 
       const updatedComments = comments.update({
         ...req.body,
-        auteur:comments.auteurs
+        contenu:comments.contenu
       });
 
       updatedComments.then((updatedComments) => {
@@ -84,12 +59,7 @@ const deleteComment = (req, res) => {
 const getAllComments = (req, res) => {
   const { urgenceId } = req.params;
 
-  // urgenceTable
-  //   .findByPk(urgenceId)
-  //   .then((urgences) => {
-  //     if (!urgences) {
-  //       return res.status(404).send({ message: "urgence inexistante ! " });
-  //     }
+
 
        commentTable.findAll({where:{
         urgenceId:urgenceId
@@ -108,6 +78,5 @@ const getAllComments = (req, res) => {
         .json({ message: "Erreur lors de la récupération des commentaires" });
     });
 };
-module.exports = {
-  addComment, updateComment, deleteComment, getAllComments
+module.exports = { updateComment, deleteComment, getAllComments
 };
