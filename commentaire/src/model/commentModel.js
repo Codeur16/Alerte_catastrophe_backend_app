@@ -10,25 +10,14 @@ const Comment = sequelize.define('comment', {
     type: DataTypes.TEXT,
     allowNull: false
   },
-  auteur: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  urgence_Id: {
+  urgenceId: {
     type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: 'urgence',
-      key: 'urgenceId'
-    }
+    allowNull: false
   }
 }, {
   tableName: 'comment',
   timestamps: true
 });
-Comment.associate = (models) => {
-    Comment.belongsTo( models.urgence, { foreignKey: 'Urgence_Id',   sourceKey: 'urgenceId' });
-};
 return Comment;
 };
 

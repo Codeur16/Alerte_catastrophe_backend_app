@@ -3,10 +3,10 @@ const router = express.Router();
 
 
 const { addComment, updateComment, deleteComment, getAllComments } = require("../controller/comment-Controller");
-
+const { createCommentWithPost } = require("../controller/createComment");
 
 // Commenter une urgence signalée
-router.post("/:urgenceId/comments", addComment);
+router.post("/create", createCommentWithPost);
 // modifier un commentaire 
 router.put("/:commentId", updateComment);
 //supprimer un commentaire

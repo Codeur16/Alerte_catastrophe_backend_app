@@ -17,7 +17,7 @@ const newUrgence = (req, res) => {
     })
     .then((response) => {
       // Répondre à la demande
-      res.status(201).json({ message: "Article créé avec succès par le user" });
+      res.status(201).json({ message: "Article créé avec succès par le user", data: response.data });
     })
     .catch((error) => {
       console.error(error);

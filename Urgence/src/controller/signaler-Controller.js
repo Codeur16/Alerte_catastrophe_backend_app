@@ -7,7 +7,7 @@ const createUrgenceWithImages = async (req, res) => {
 
   try {
     const { userId, type, description, lieu, date, images } = req.body;
-
+    
     // Créer le urgence
     const createdurgence = await urgenceTable.create({ userId, type, description, lieu, date });
 
@@ -30,7 +30,7 @@ const createUrgenceWithImages = async (req, res) => {
 
     res
       .status(201)
-      .json({ message: "urgence créé avec succès", data: createdurgence });
+      .json({ message: "OK", data:createdurgence });
   } catch (error) {
     console.error("Erreur lors de la création du urgence:", error);
     res.status(500).json({ error: "Erreur lors de la création du urgence" });

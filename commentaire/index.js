@@ -5,14 +5,14 @@ const port=3006;
 initDB(DB);
 
 
-const UrgenceRoutes = require('./src/router/urgenceRouter');
+const commentRouter = require("./src/router/commentRouter")
 const errorHandler = require('./src/middleware/errorHalder');
 
 // Middleware pour la prise en charge du corps des requêtes au format JSON
 app.use(express.json());
 
 // Routes pour les urgences
-app.use('/urgence', UrgenceRoutes);
+app.use('/comment', commentRouter);
 
 // Gestionnaire d'erreurs
 app.use(errorHandler);

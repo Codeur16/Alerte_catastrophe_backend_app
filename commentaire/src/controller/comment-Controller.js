@@ -84,15 +84,15 @@ const deleteComment = (req, res) => {
 const getAllComments = (req, res) => {
   const { urgenceId } = req.params;
 
-  urgenceTable
-    .findByPk(urgenceId)
-    .then((urgences) => {
-      if (!urgences) {
-        return res.status(404).send({ message: "urgence inexistante ! " });
-      }
+  // urgenceTable
+  //   .findByPk(urgenceId)
+  //   .then((urgences) => {
+  //     if (!urgences) {
+  //       return res.status(404).send({ message: "urgence inexistante ! " });
+  //     }
 
        commentTable.findAll({where:{
-        urgence_Id:urgenceId
+        urgenceId:urgenceId
       }})
       .then((comments)=>{
         const message = `Les commentaires ont bien été récupérés`;
@@ -100,7 +100,7 @@ const getAllComments = (req, res) => {
       })
 
       // return res.status(200).json({ data: comments });
-    })
+    // })
     .catch((err) => {
       console.error(err);
       res
