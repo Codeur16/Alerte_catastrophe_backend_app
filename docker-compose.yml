@@ -1,0 +1,34 @@
+version: 'v3'
+
+services:
+  auth:
+    container_name: auth
+    image: loico16/auth:v3
+    build:
+      context: ./Authentification
+    ports:
+      - 3001:3001
+
+  commentaire:
+    container_name: commentaire
+    image: loico16/commentaire:v3
+    build:
+      context: ./commentaire
+    ports:
+      - 3006:3006
+
+  notification:
+    container_name: notification
+    image: loico16/notification:v3
+    build:
+      context: ./Notification
+    ports:
+      - 3004:3004
+
+  urgence:
+    container_name: urgence
+    image: loico16/urgence:v3
+    build:
+      context: ./Urgence
+    ports:
+      - 3000:3000

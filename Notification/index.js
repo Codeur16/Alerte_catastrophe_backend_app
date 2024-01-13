@@ -17,7 +17,7 @@ const port = 3004;
 app.use(express.json());
 
 // Routes pour les urgences
-app.use('/get', NotifRoutes);
+app.use('/notificaton', NotifRoutes);
 
 // Gestionnaire d'erreurs
 app.use(errorHandler);

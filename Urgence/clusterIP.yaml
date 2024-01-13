@@ -7,6 +7,6 @@ spec:
     app: urgence
   ports:
     - protocol: TCP
-      port: 30
-      targetPort: 30
+      port: 3000
+      targetPort: 3000
   type: ClusterIP

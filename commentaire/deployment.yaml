@@ -13,6 +13,6 @@ spec:
     spec:
       containers:
       - name: commentaire
-        image: loico16/commentaire:latest
+        image: loico16/commentaire:v4
         ports:
         - containerPort: 3006

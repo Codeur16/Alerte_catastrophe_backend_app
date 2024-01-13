@@ -1,4 +1,4 @@
-const {urgenceTable} = require('../config/database');
+const {urgenceTable, imageTable} = require('../config/database');
 const { Op } = require('sequelize');
 
 // Rechercher une urgence par titre ou description
@@ -8,10 +8,13 @@ async function searchEmergencies(req, res) {
     const emergencies = await urgenceTable.findAll({
       where: {
         [Op.or]: [
-          { titre: { [Op.like]: `%${name}%` } }
-          // { description: { [Op.like]: `%${query}%` } },
+          { type: { [Op.like]: `%${name}%` } },
+          { description: { [Op.like]: `%${name}%` } },
+          { lieu: { [Op.like]: `%${name}%` } },
+          // Ajoutez d'autres conditions pour chaque champ que vous souhaitez rechercher
         ],
       },
+      include: [{ model: imageTable, as: "Image" }],
     });
     res.json(emergencies);
   } catch (err) {
@@ -25,3 +28,6 @@ async function searchEmergencies(req, res) {
 module.exports = {
   searchEmergencies
 };
+
+ // description: { [Op.like]: `%${name}%` },
+          // lieu: { [Op.like]: `%${name}%` },

@@ -15,7 +15,7 @@ spec:
         app: auth
     spec:
       containers:
-      - name: auth
-        image: loico16/auth:latest
-        ports:
-        - containerPort: 3005
+        - name: auth
+          image: loico16/auth:v4
+          ports:
+            - containerPort: 3005

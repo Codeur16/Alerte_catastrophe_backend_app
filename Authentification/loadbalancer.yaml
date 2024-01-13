@@ -10,3 +10,5 @@ spec:
       port: 3005
       targetPort: 3005
   type: LoadBalancer
+  externalTrafficPolicy: Cluster
+  nodePort: 30005

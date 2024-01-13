@@ -10,3 +10,5 @@ spec:
       port: 3000
       targetPort: 3000
   type: LoadBalancer
+  externalTrafficPolicy: Cluster
+  nodePort: 30000

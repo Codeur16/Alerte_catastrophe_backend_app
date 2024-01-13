@@ -13,6 +13,14 @@ spec:
     spec:
       containers:
       - name: urgence
-        image: loico16/urgence:latest
+        image: loico16/urgence:v4
         ports:
         - containerPort: 3000
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+          requests:
+            cpu: "100m"
+            memory: "256Mi"
+      

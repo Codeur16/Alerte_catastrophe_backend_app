@@ -1,47 +1,63 @@
-const urgence =(sequelize, DataTypes)=>{
-    const Urgence = sequelize.define('urgence', {
-        urgenceId: {
-          type: DataTypes.INTEGER,
-          primaryKey: true,
-          autoIncrement: true
-        },
-        userId:{
-          type: DataTypes.INTEGER,
-          allowNull: false
-        },
-        type: {
-          type: DataTypes.STRING,
-          allowNull: false
-        },
-        description: {
-          type: DataTypes.TEXT,
-          allowNull: false
-        },
-        lieu:{
-          type: DataTypes.STRING,
-          allowNull: false
-        },
-        date:{
-          type: DataTypes.DATE,
-          allowNull: false
-        }
-        
-      }, {
-        tableName: 'urgence', // Nom de la table dans la base de données (facultatif)
-        timestamps: true // Ajouter automatiquement les champs createdAt et updatedAt (facultatif)
-      });
-      Urgence.associate = (models)=>{
-        Urgence.hasMany(models.image , {
-            foreignKey: 'urgence_Id',
-            sourceKey:'urgenceId'
-        });
+const Urgence = (sequelize, DataTypes) => {
+  const Urgence = sequelize.define('Urgence', {
+    urgenceId: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    type: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    lieu: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    date: {
+      type: DataTypes.DATE,
+      allowNull: false
     }
-  
-    return Urgence;
-    };
-      
-      // Exporter le modèle Urgence
-      module.exports = urgence;
+  }, {
+    tableName: 'Urgence',
+    timestamps: true
+  });
 
 
+  return Urgence;
+};
+
+const Image = (sequelize, DataTypes) => {
+  const Image = sequelize.define(
+    "Image",
+    {
+      ImageId: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+      url: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      urgence_Id: {  
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        
+      },
+    },
+    {
+      tableName: "Image",
+      timestamps: true,
+    }
+  );
+
+
+  return Image;
+};
+
+module.exports = { Urgence, Image };
 

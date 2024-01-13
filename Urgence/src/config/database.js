@@ -1,7 +1,7 @@
 
 const {Sequelize, DataTypes} =require('sequelize');
-const urgence = require('../model/urgenceModel');
-const  image = require('../model/ImageModel');
+const {Urgence, Image} = require('../model/urgenceModel');
+// const  image = require('../model/ImageModel');
 
 
 // Créer une instance Sequelize avec les informations de connexion
@@ -26,7 +26,21 @@ DB
     
   }
 //creation des tables  
-const imageTable = image(DB, DataTypes);
-const urgenceTable = urgence(DB, DataTypes);
+const imageTable = Image(DB, DataTypes);
+const urgenceTable = Urgence(DB, DataTypes);
+
+// urgenceTable.hasMany(imageTable, {
+//   foreignKey: 'urgence_Id',
+//   sourceKey:'urgenceId',
+//   as: 'Image',
+//   // onDelete: 'CASCADE'
+// })                
+
+// imageTable.belongsTo(urgenceTable, {
+//   foreignKey: 'urgence_Id',
+//   sourceKey:'urgenceId',
+//   as: 'urgence'
+// }
+// )
 
 module.exports = {DB, initDB, imageTable, urgenceTable};

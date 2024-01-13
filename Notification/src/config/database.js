@@ -1,6 +1,6 @@
 
 const {Sequelize, DataTypes} =require('sequelize');
-// const userModel = require('../model/userModel');
+const { notification} = require('../model/model');
 
 
 // Créer une instance Sequelize avec les informations de connexion
@@ -25,6 +25,6 @@ DB
     
   }
 //creation des tables  
-// const userTable = userModel(DB, DataTypes);
+const notifTable = notification(DB, DataTypes);
 
-module.exports = {DB, initDB };
+module.exports = {DB, initDB , notifTable};

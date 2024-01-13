@@ -11,6 +11,6 @@ router.post("/login", login);
 // Rechercher une urgence par titre ou description
 router.post("/signup", signup);
 // creer une urgence 
-router.post('/:userId/create-post',auth,  newUrgence );
+// router.post('/:userId/create-post',auth,  newUrgence );
 
 module.exports = router;
