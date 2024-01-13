@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: auth
-          image: loico16/auth:v4
+          image: loico16/auth:v5
           ports:
             - containerPort: 3005

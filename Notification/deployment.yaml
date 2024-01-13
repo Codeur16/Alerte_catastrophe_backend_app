@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: notification
-        image: loico16/notification:v4
+        image: loico16/notification:v5
         ports:
         - containerPort: 3004

@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: urgence
-        image: loico16/urgence:v4
+        image: loico16/urgence:v6
         ports:
         - containerPort: 3000
         resources:
